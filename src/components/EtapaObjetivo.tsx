@@ -1,5 +1,8 @@
 // src/components/EtapaObjetivo.tsx
-import type { DadosFinanceiros, ObjetivoFinanceiro } from "../types/financas";
+import type {
+  DadosFinanceiros,
+  ObjetivoFinanceiro,
+} from "../types/diagnostico";
 
 interface EtapaObjetivoProps {
   dados: Partial<DadosFinanceiros>;

@@ -1,5 +1,5 @@
 // src/services/geminiService.ts
-import type { DadosFinanceiros, DiagnosticoIA } from "../types/financas";
+import type { DadosFinanceiros, DiagnosticoIA } from "../types/diagnostico";
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const API_URL =
@@ -32,11 +32,11 @@ Use linguagem acessível, sem jargões técnicos. Seja específico com os númer
 }
 
 export async function gerarDiagnostico(
-  dados: DadosFinanceiros
+  dados: DadosFinanceiros,
 ): Promise<DiagnosticoIA> {
   if (!API_KEY) {
     throw new Error(
-      "Chave da API do Gemini não configurada. Verifique o arquivo .env"
+      "Chave da API do Gemini não configurada. Verifique o arquivo .env",
     );
   }
 

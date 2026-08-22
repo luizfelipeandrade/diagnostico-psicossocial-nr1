@@ -1,5 +1,5 @@
 // src/components/EtapaRevisao.tsx
-import type { DadosFinanceiros } from "../types/financas";
+import type { DadosFinanceiros } from "../types/diagnostico";
 
 interface EtapaRevisaoProps {
   dados: Partial<DadosFinanceiros>;

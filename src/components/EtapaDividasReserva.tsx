@@ -1,12 +1,15 @@
 // src/components/EtapaDividasReserva.tsx
-import type { DadosFinanceiros } from "../types/financas";
+import type { DadosFinanceiros } from "../types/diagnostico";
 
 interface EtapaDividasReservaProps {
   dados: Partial<DadosFinanceiros>;
   aoAtualizar: (campos: Partial<DadosFinanceiros>) => void;
 }
 
-export function EtapaDividasReserva({ dados, aoAtualizar }: EtapaDividasReservaProps) {
+export function EtapaDividasReserva({
+  dados,
+  aoAtualizar,
+}: EtapaDividasReservaProps) {
   return (
     <div className="etapa">
       <h2>Agora, dívidas e reserva de emergência</h2>
@@ -27,7 +30,9 @@ export function EtapaDividasReserva({ dados, aoAtualizar }: EtapaDividasReservaP
         placeholder="0 se não tiver dívidas"
       />
 
-      <label htmlFor="reservaEmergencia">Reserva de emergência atual (R$)</label>
+      <label htmlFor="reservaEmergencia">
+        Reserva de emergência atual (R$)
+      </label>
       <input
         id="reservaEmergencia"
         type="number"
@@ -35,7 +40,9 @@ export function EtapaDividasReserva({ dados, aoAtualizar }: EtapaDividasReservaP
         value={dados.reservaEmergencia ?? ""}
         onChange={(e) => {
           const valor = e.target.value;
-          aoAtualizar({ reservaEmergencia: valor === "" ? undefined : Number(valor) });
+          aoAtualizar({
+            reservaEmergencia: valor === "" ? undefined : Number(valor),
+          });
         }}
         placeholder="0 se ainda não tiver"
       />

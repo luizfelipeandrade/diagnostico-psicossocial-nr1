@@ -1,12 +1,15 @@
 // src/components/EtapaRendaGastos.tsx
-import type { DadosFinanceiros } from "../types/financas";
+import type { DadosFinanceiros } from "../types/diagnostico";
 
 interface EtapaRendaGastosProps {
   dados: Partial<DadosFinanceiros>;
   aoAtualizar: (campos: Partial<DadosFinanceiros>) => void;
 }
 
-export function EtapaRendaGastos({ dados, aoAtualizar }: EtapaRendaGastosProps) {
+export function EtapaRendaGastos({
+  dados,
+  aoAtualizar,
+}: EtapaRendaGastosProps) {
   return (
     <div className="etapa">
       <h2>Vamos começar pela sua renda e gastos</h2>
@@ -22,7 +25,9 @@ export function EtapaRendaGastos({ dados, aoAtualizar }: EtapaRendaGastosProps) 
         value={dados.rendaMensal ?? ""}
         onChange={(e) => {
           const valor = e.target.value;
-          aoAtualizar({ rendaMensal: valor === "" ? undefined : Number(valor) });
+          aoAtualizar({
+            rendaMensal: valor === "" ? undefined : Number(valor),
+          });
         }}
         placeholder="Ex: 3500"
       />
@@ -35,7 +40,9 @@ export function EtapaRendaGastos({ dados, aoAtualizar }: EtapaRendaGastosProps) 
         value={dados.gastosFixos ?? ""}
         onChange={(e) => {
           const valor = e.target.value;
-          aoAtualizar({ gastosFixos: valor === "" ? undefined : Number(valor) });
+          aoAtualizar({
+            gastosFixos: valor === "" ? undefined : Number(valor),
+          });
         }}
         placeholder="Aluguel, contas, etc."
       />
@@ -48,7 +55,9 @@ export function EtapaRendaGastos({ dados, aoAtualizar }: EtapaRendaGastosProps) 
         value={dados.gastosVariaveis ?? ""}
         onChange={(e) => {
           const valor = e.target.value;
-          aoAtualizar({ gastosVariaveis: valor === "" ? undefined : Number(valor) });
+          aoAtualizar({
+            gastosVariaveis: valor === "" ? undefined : Number(valor),
+          });
         }}
         placeholder="Lazer, compras, etc."
       />

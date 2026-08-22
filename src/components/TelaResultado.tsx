@@ -1,21 +1,40 @@
 // src/components/TelaResultado.tsx
-import type { DiagnosticoIA } from "../types/financas";
+import type { DiagnosticoIA } from "../types/diagnostico";
 
 interface TelaResultadoProps {
   diagnostico: DiagnosticoIA;
   aoReiniciar: () => void;
 }
 
-export function TelaResultado({ diagnostico, aoReiniciar }: TelaResultadoProps) {
+export function TelaResultado({
+  diagnostico,
+  aoReiniciar,
+}: TelaResultadoProps) {
   return (
     <div className="formulario-container resultado">
       <h2>Seu diagnóstico financeiro</h2>
       <p className="diagnostico-texto">{diagnostico.diagnostico}</p>
 
-      <SecaoLista titulo="Pontos fortes" itens={diagnostico.pontosFortes} tipo="positivo" />
-      <SecaoLista titulo="Pontos de atenção" itens={diagnostico.pontosAtencao} tipo="atencao" />
-      <SecaoLista titulo="Recomendações" itens={diagnostico.recomendacoes} tipo="neutro" />
-      <SecaoLista titulo="Próximos passos" itens={diagnostico.proximosPassos} tipo="neutro" />
+      <SecaoLista
+        titulo="Pontos fortes"
+        itens={diagnostico.pontosFortes}
+        tipo="positivo"
+      />
+      <SecaoLista
+        titulo="Pontos de atenção"
+        itens={diagnostico.pontosAtencao}
+        tipo="atencao"
+      />
+      <SecaoLista
+        titulo="Recomendações"
+        itens={diagnostico.recomendacoes}
+        tipo="neutro"
+      />
+      <SecaoLista
+        titulo="Próximos passos"
+        itens={diagnostico.proximosPassos}
+        tipo="neutro"
+      />
 
       <button type="button" className="botao-reiniciar" onClick={aoReiniciar}>
         Fazer nova simulação
