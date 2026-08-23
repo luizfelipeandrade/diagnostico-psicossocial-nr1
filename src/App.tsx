@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useState, useEffect } from "react";
 // Interfaces
 export interface Empresa {
   nomeEmpresa: string;
@@ -230,8 +229,6 @@ export const App: React.FC = () => {
   const [formEnviado, setFormEnviado] = useState<boolean>(false);
   const [setorQrCodeAtivo, setSetorQrCodeAtivo] = useState<Setor | null>(null);
   const [baixandoQr, setBaixandoQr] = useState<boolean>(false);
-
-  const qrCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     localStorage.setItem("app_tema", modoEscuro ? "dark" : "light");

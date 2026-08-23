@@ -8,18 +8,7 @@ import { processarResultadosNR1 } from "../utils/calculoNR1";
 import { gerarPlanoAcao5W2H, type Item5W2H } from "../utils/planoAcao5W2H";
 import { PlanoAcao5W2HModal } from "./PlanoAcao5W2HModal";
 
-interface PainelEmpresaProps {
-  onIniciarQuestionarioSetor?: (
-    nomeEmpresa: string,
-    setorNome: string,
-    emailContato: string,
-    idSetor: string,
-  ) => void;
-}
-
-export const PainelEmpresa: React.FC<PainelEmpresaProps> = ({
-  onIniciarQuestionarioSetor,
-}) => {
+export const PainelEmpresa: React.FC = () => {
   const [empresa, setEmpresa] = useState<
     DadosEmpresa & { emailContato: string }
   >({
@@ -102,6 +91,7 @@ export const PainelEmpresa: React.FC<PainelEmpresaProps> = ({
   const handleGerarPlano5W2H = () => {
     if (!setorSelecionadoRelatorio) return;
 
+    // Respostas reais ou simuladas para demonstração
     const ultimasRespostas =
       respostasDoSetor.length > 0
         ? respostasDoSetor[respostasDoSetor.length - 1].respostas
@@ -297,10 +287,24 @@ export const PainelEmpresa: React.FC<PainelEmpresaProps> = ({
                       >
                         📱 QR Code
                       </button>
+
+                      <a
+                        href={s.linkAnonimo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary"
+                        style={{
+                          padding: "6px 12px",
+                          fontSize: "12px",
+                          textDecoration: "none",
+                          textAlign: "center",
+                        }}
+                      >
+                        ▶ Simular Resposta
+                      </a>
                     </div>
                   </div>
 
-                  {/* CAMPO DE LINK E BOTÕES DE AÇÃO CORRETOS */}
                   <div
                     style={{
                       display: "flex",
@@ -319,8 +323,6 @@ export const PainelEmpresa: React.FC<PainelEmpresaProps> = ({
                         background: "var(--bg-card)",
                       }}
                     />
-
-                    {/* Botão Copiar Link */}
                     <button
                       type="button"
                       className="btn-secondary"
@@ -337,23 +339,6 @@ export const PainelEmpresa: React.FC<PainelEmpresaProps> = ({
                     >
                       {copiadoId === s.id ? "✓ Copiado!" : "Copiar Link"}
                     </button>
-
-                    {/* Botão Abrir Formulário em Nova Aba */}
-                    <a
-                      href={s.linkAnonimo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary"
-                      style={{
-                        whiteSpace: "nowrap",
-                        padding: "8px 14px",
-                        fontSize: "12px",
-                        textDecoration: "none",
-                        textAlign: "center",
-                      }}
-                    >
-                      Abrir Formulário ↗
-                    </a>
                   </div>
                 </div>
               );
