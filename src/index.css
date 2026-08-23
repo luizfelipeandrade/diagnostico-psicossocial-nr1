@@ -1,21 +1,27 @@
 :root {
-  --verde-escuro: #0f3d3a;
-  --verde-medio: #1f6f5c;
-  --dourado: #c9a227;
-  --bg-claro: #f7f6f2;
-  --card-claro: #ffffff;
-  --texto-claro: #1c2b2a;
-  --texto-claro-suave: #5a6b69;
-  --borda-claro: #e0ddd3;
+  --bg-primary: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --option-bg: #f1f5f9;
+  --option-selected: #2563eb;
+  --option-selected-text: #ffffff;
+}
 
-  --bg-escuro: #0d1614;
-  --card-escuro: #16211f;
-  --texto-escuro: #eef1ef;
-  --texto-escuro-suave: #9fb0ae;
-  --borda-escuro: #2a3836;
-
-  --fonte-titulo: "Fraunces", Georgia, serif;
-  --fonte-corpo: "Inter", system-ui, sans-serif;
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --primary-color: #3b82f6;
+  --primary-hover: #60a5fa;
+  --option-bg: #334155;
+  --option-selected: #3b82f6;
+  --option-selected-text: #ffffff;
 }
 
 * {
@@ -24,29 +30,102 @@
 
 body {
   margin: 0;
-  font-family: var(--fonte-corpo);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  min-height: 100svh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-body.tema-claro {
-  background-color: var(--bg-claro);
-  color: var(--texto-claro);
+/* Card Moderno */
+.card-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
-body.tema-escuro {
-  background-color: var(--bg-escuro);
-  color: var(--texto-escuro);
+/* Botões de Opção da Likert */
+.likert-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
 }
 
-h1, h2 {
-  font-family: var(--fonte-titulo);
+.likert-option {
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--option-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.likert-option:hover {
+  border-color: var(--primary-color);
+}
+
+.likert-option.active {
+  background-color: var(--option-selected) !important;
+  color: var(--option-selected-text) !important;
+  border-color: var(--option-selected) !important;
   font-weight: 600;
-  letter-spacing: -0.5px;
 }
 
-#root {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+/* Inputs Modernos */
+.input-field {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--primary-color);
+}
+
+/* Botão Principal */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
 }

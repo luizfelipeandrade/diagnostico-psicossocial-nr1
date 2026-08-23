@@ -1,5 +1,5 @@
 import React from "react";
-import { PERGUNTAS_NR1, ESCALA_LIKERT } from "../data/perguntasNR1";
+import { PERGUNTAS_NR1 } from "../data/perguntasNR1";
 
 interface FormularioProps {
   indiceAtual: number;
@@ -9,7 +9,7 @@ interface FormularioProps {
   onAnterior: () => void;
 }
 
-export const FormularioDiagnostico: React.FC<FormularioProps> = ({
+export const Formulario: React.FC<FormularioProps> = ({
   indiceAtual,
   respostas,
   onResponder,
@@ -17,43 +17,125 @@ export const FormularioDiagnostico: React.FC<FormularioProps> = ({
   onAnterior,
 }) => {
   const pergunta = PERGUNTAS_NR1[indiceAtual];
-  const totalPerguntas = PERGUNTAS_NR1.length;
+  const respostaSelecionada = respostas[pergunta.id];
+  const progresso = Math.round(
+    ((indiceAtual + 1) / PERGUNTAS_NR1.length) * 100,
+  );
+
+  const opcoes = [
+    { valor: 1, rotulo: "1 - Discordo Totalmente (Situação Crítica)" },
+    { valor: 2, rotulo: "2 - Discordo Parcialmente" },
+    { valor: 3, rotulo: "3 - Neutro / Às Vezes" },
+    { valor: 4, rotulo: "4 - Concordo Parcialmente" },
+    { valor: 5, rotulo: "5 - Concordo Totalmente (Ambiente Protetor)" },
+  ];
 
   return (
-    <div className="card-diagnostico">
-      <div className="progresso">
-        <span>Domínio: {pergunta.dominio}</span>
-        <span>
-          Pergunta {indiceAtual + 1} de {totalPerguntas}
-        </span>
+    <div className="card-container">
+      {/* Barra de Progresso */}
+      <div style={{ marginBottom: "20px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: "12px",
+            color: "var(--text-secondary)",
+            marginBottom: "6px",
+          }}
+        >
+          <span>
+            Questão {indiceAtual + 1} de {PERGUNTAS_NR1.length}
+          </span>
+          <span>{progresso}% concluído</span>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            height: "6px",
+            backgroundColor: "var(--border-color)",
+            borderRadius: "3px",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              width: `${progresso}%`,
+              height: "100%",
+              backgroundColor: "var(--primary-color)",
+              transition: "width 0.3s ease",
+            }}
+          />
+        </div>
       </div>
 
-      <h3 className="pergunta-texto">{pergunta.texto}</h3>
+      {/* Domínio e Pergunta */}
+      <span
+        style={{
+          fontSize: "12px",
+          fontWeight: "bold",
+          color: "var(--primary-color)",
+          textTransform: "uppercase",
+          letterSpacing: "0.5px",
+        }}
+      >
+        {pergunta.dominio}
+      </span>
+      <h3
+        style={{ margin: "8px 0 20px 0", fontSize: "18px", lineHeight: "1.4" }}
+      >
+        {pergunta.texto}
+      </h3>
 
-      <div className="opcoes-likert">
-        {ESCALA_LIKERT.map((opcao) => (
-          <button
-            key={opcao.valor}
-            className={`btn-opcao ${respostas[pergunta.id] === opcao.valor ? "selecionado" : ""}`}
-            onClick={() => onResponder(pergunta.id, opcao.valor)}
-          >
-            {opcao.rotulo}
-          </button>
-        ))}
+      {/* Grupo de Respostas Likert */}
+      <div className="likert-group">
+        {opcoes.map((op) => {
+          const selecionado = respostaSelecionada === op.valor;
+          return (
+            <button
+              key={op.valor}
+              type="button"
+              className={`likert-option ${selecionado ? "active" : ""}`}
+              onClick={() => onResponder(pergunta.id, op.valor)}
+            >
+              <span>{op.rotulo}</span>
+              {selecionado && <span>✓</span>}
+            </button>
+          );
+        })}
       </div>
 
-      <div className="botoes-navegacao">
-        <button onClick={onAnterior} disabled={indiceAtual === 0}>
+      {/* Botões de Navegação */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "24px",
+        }}
+      >
+        <button
+          className="btn-secondary"
+          onClick={onAnterior}
+          disabled={indiceAtual === 0}
+          style={{
+            opacity: indiceAtual === 0 ? 0.5 : 1,
+            cursor: indiceAtual === 0 ? "not-allowed" : "pointer",
+          }}
+        >
           Anterior
         </button>
-        <button onClick={onProxima} disabled={!respostas[pergunta.id]}>
-          {indiceAtual === totalPerguntas - 1 ? "Finalizar" : "Próxima"}
+
+        <button
+          className="btn-primary"
+          onClick={onProxima}
+          disabled={!respostaSelecionada}
+          style={{
+            opacity: !respostaSelecionada ? 0.5 : 1,
+            cursor: !respostaSelecionada ? "not-allowed" : "pointer",
+          }}
+        >
+          {indiceAtual === PERGUNTAS_NR1.length - 1 ? "Finalizar" : "Próxima"}
         </button>
       </div>
     </div>
   );
 };
-
-// Aliases para resolver conflitos de importação no App.tsx
-export const Formulario = FormularioDiagnostico;
-export default FormularioDiagnostico;
