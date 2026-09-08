@@ -29,7 +29,7 @@ O projeto foi desenvolvido como um protótipo acadêmico utilizando React e Type
 
 ## 🏗️ Estrutura do projeto
 
-```text
+```
 src/
 ├── assets/
 ├── components/
@@ -42,10 +42,11 @@ src/
 ├── App.css
 ├── index.css
 └── main.tsx
-
+```
 A aplicação utiliza componentes separados para diferentes responsabilidades, além de estruturas específicas para dados, tipos, contexto, hooks e utilitários.
 
 📋 Fluxo da aplicação
+
 Empresa
    ↓
 Cadastro das informações
@@ -95,4 +96,3 @@ Não deve ser interpretado como ferramenta de diagnóstico médico ou como subst
 Desenvolvedor de Software em formação
 
 [GitHub](https://github.com/luizfelipeandrade) • [LinkedIn](https://www.linkedin.com/in/lfandrade)
-
