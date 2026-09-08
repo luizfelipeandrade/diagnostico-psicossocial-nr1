@@ -95,3 +95,4 @@ Não deve ser interpretado como ferramenta de diagnóstico médico ou como subst
 Desenvolvedor de Software em formação
 
 [GitHub](https://github.com/luizfelipeandrade) • [LinkedIn](https://www.linkedin.com/in/lfandrade)
+
