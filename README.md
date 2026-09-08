@@ -1,72 +1,97 @@
-# 💰 Educador Financeiro IA
+# 🧠 Diagnóstico Psicossocial NR-1
 
-Aplicação web que analisa uma simulação financeira e gera um diagnóstico personalizado usando Inteligência Artificial Generativa (Google Gemini).
+Aplicação web desenvolvida para apoiar a realização de avaliações de riscos psicossociais no ambiente de trabalho, permitindo organizar questionários, respostas por setor, resultados e planos de ação.
 
-Projeto desenvolvido como exercício da plataforma [DIO](https://www.dio.me/), unindo boas práticas de Front-End com integração de IA.
+O projeto foi desenvolvido como um protótipo acadêmico utilizando React e TypeScript, com foco na criação de uma aplicação web estruturada para coleta e organização das informações.
 
 ## ✨ Funcionalidades
 
-- **Formulário em etapas**: coleta de renda, gastos, dívidas, reserva de emergência e objetivos financeiros
-- **Validação por etapa**: impede avançar sem preencher os campos necessários
-- **Tema claro/escuro**: alternância de tema com Context API
-- **Persistência no navegador**: os dados não se perdem ao recarregar a página (localStorage)
-- **Diagnóstico com IA**: integração com a API do Google Gemini, que analisa os dados e retorna:
-  - Diagnóstico geral da situação financeira
-  - Pontos fortes
-  - Pontos de atenção
-  - Recomendações práticas
-  - Próximos passos
+- 📋 Questionário estruturado para avaliação psicossocial
+- 📊 Barra de progresso durante o preenchimento
+- 📝 Escala de respostas em formato Likert
+- 🏢 Cadastro e gerenciamento das informações da empresa
+- 👥 Organização das avaliações por setor
+- 📱 Geração de QR Code para acesso ao questionário de cada setor
+- 📈 Visualização dos resultados consolidados
+- 📄 Geração de relatório da avaliação
+- 📋 Geração de plano de ação baseado em 5W2H
+- 🌙 Alternância entre tema claro e escuro
+- 📱 Interface responsiva
 
-## 🛠️ Tecnologias utilizadas
+## 🛠️ Tecnologias
 
-- [React](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [Google Gemini API](https://ai.google.dev/)
-- Context API (tema claro/escuro)
-- localStorage (persistência)
+- React
+- TypeScript
+- Vite
+- CSS
+- QR Code
+- JavaScript / TypeScript
 
-## 🚀 Como rodar o projeto localmente
+## 🏗️ Estrutura do projeto
 
-### Pré-requisitos
+```text
+src/
+├── assets/
+├── components/
+├── context/
+├── data/
+├── hooks/
+├── types/
+├── utils/
+├── App.tsx
+├── App.css
+├── index.css
+└── main.tsx
 
-- [Node.js](https://nodejs.org/) instalado (versão LTS recomendada)
-- Uma chave de API do Google Gemini, obtida em [Google AI Studio](https://aistudio.google.com/)
+A aplicação utiliza componentes separados para diferentes responsabilidades, além de estruturas específicas para dados, tipos, contexto, hooks e utilitários.
 
-### Passo a passo
+📋 Fluxo da aplicação
+Empresa
+   ↓
+Cadastro das informações
+   ↓
+Configuração dos setores
+   ↓
+Questionário
+   ↓
+Respostas dos colaboradores
+   ↓
+Consolidação dos resultados
+   ↓
+Relatório
+   ↓
+Plano de Ação 5W2H
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/luizfelipeandrade/educador-financeiro-ia
-```
+📱 Questionário por QR Code
 
-2. Entre na pasta do projeto:
-```bash
-cd educador-financeiro-ia
-```
+Cada setor pode possuir um link específico para o questionário.
 
-3. Instale as dependências:
-```bash
-npm install
-```
+O sistema permite gerar um QR Code associado ao setor, facilitando o acesso dos colaboradores ao formulário por dispositivos móveis.
 
-4. Crie um arquivo `.env` na raiz do projeto com sua chave da API: VITE_GEMINI_API_KEY=sua_chave_aqui
+📄 Relatórios
 
-5. Rode o projeto:
-```bash
-npm run dev
-```
+A aplicação permite visualizar os resultados de cada setor e gerar um relatório estruturado contendo informações da empresa, setor avaliado, resultados e recomendações de ação.
 
-6. Acesse o endereço mostrado no terminal (geralmente `http://localhost:5173`)
+📋 Plano de Ação 5W2H
 
-## ⚠️ Aviso de segurança
+A aplicação também apresenta um plano de ação baseado na metodologia 5W2H, relacionando os resultados obtidos na avaliação com possíveis ações preventivas e de acompanhamento.
 
-Este projeto chama a API do Gemini diretamente do navegador, o que expõe a chave da API no código do cliente. Essa abordagem é adequada para fins de **aprendizado e portfólio**, mas não é recomendada para aplicações em produção — nesses casos, a chamada deveria passar por um backend/servidor que protege a chave.
+🎓 Contexto do projeto
 
-## 📌 Status
+Projeto desenvolvido como protótipo acadêmico para estudo e demonstração de desenvolvimento de aplicações web.
 
-Projeto funcional e completo, desenvolvido como exercício de estudo (DIO).
+O projeto também foi utilizado como oportunidade para aprofundar conhecimentos em React, TypeScript, organização de componentes, gerenciamento de estado, geração de relatórios e integração de recursos externos.
+
+⚠️ Observação
+
+Este projeto possui finalidade acadêmica e demonstrativa.
+
+Não deve ser interpretado como ferramenta de diagnóstico médico ou como substituto de avaliação realizada por profissionais qualificados.
 
 ## 👤 Autor
 
-Luiz Felipe
+**Luiz Felipe Andrade**
+
+Desenvolvedor de Software em formação
+
+[GitHub](https://github.com/luizfelipeandrade) • [LinkedIn](https://www.linkedin.com/in/lfandrade)
